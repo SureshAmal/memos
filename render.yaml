@@ -2,9 +2,7 @@ services:
   - type: web
     name: memos
     runtime: docker
-    plan: starter
-    region: oregon
-    dockerfilePath: ./scripts/Dockerfile
+    dockerfilePath: scripts/Dockerfile
     dockerContext: .
     envVars:
       - key: MEMOS_MODE
