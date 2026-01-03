@@ -1,0 +1,25 @@
+app = "memos-app"
+primary_region = "sjc"
+
+[build]
+  dockerfile = "scripts/Dockerfile"
+
+[env]
+  MEMOS_MODE = "prod"
+  MEMOS_PORT = "5230"
+
+[[services]]
+  internal_port = 5230
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+[mounts]
+  source = "memos_data"
+  destination = "/var/opt/memos"

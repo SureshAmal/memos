@@ -1,0 +1,39 @@
+{
+  "buildCommand": "cd web && pnpm install && pnpm build",
+  "installCommand": "cd web && pnpm install",
+  "outputDirectory": "web/dist",
+  "framework": null,
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://your-backend-url.com/api/:path*"
+    },
+    {
+      "source": "/memos.api.v1.:path*",
+      "destination": "https://your-backend-url.com/memos.api.v1.:path*"
+    },
+    {
+      "source": "/file/:path*",
+      "destination": "https://your-backend-url.com/file/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ]
+}
