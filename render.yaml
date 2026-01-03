@@ -2,8 +2,6 @@ services:
   - type: web
     name: memos
     runtime: docker
-    dockerfilePath: scripts/Dockerfile
-    dockerContext: .
     envVars:
       - key: MEMOS_MODE
         value: prod
